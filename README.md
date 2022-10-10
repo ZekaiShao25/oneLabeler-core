@@ -12,6 +12,13 @@
 npm install @onelabeler/core
 ```
 
+## Usage
+
+```js
+import { dataTypeImage } from '@onelabeler/core'
+import '@onelabeler/core/dist/style.css'
+```
+
 [downloads-img]: https://img.shields.io/npm/dt/@onelabeler/core
 [downloads-url]: https://www.npmtrends.com/@onelabeler/core
 [npm-img]: https://img.shields.io/npm/v/@onelabeler/core

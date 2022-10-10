@@ -6,13 +6,13 @@
   "description": "A starter template for Vue + TypeScript NPM package.",
   "author": "Yu Zhang",
   "license": "MIT",
-  "url": "https://github.com/zhangyu94/vue-ts-package-starter",
+  "url": "https://github.com/OneLabeler/core",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zhangyu94/vue-ts-package-starter.git"
+    "url": "https://github.com/OneLabeler/core.git"
   },
   "bugs": {
-    "url": "https://github.com/zhangyu94/vue-ts-package-starter/issues"
+    "url": "https://github.com/OneLabeler/core/issues"
   },
   "keywords": [
     "vuejs",
