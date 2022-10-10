@@ -1,26 +1,15 @@
 <script setup lang="ts">
-import { dataTypeImage } from '@onelabeler/core'
+import { dataTypeText } from '@onelabeler/core'
 
 const dataObject = {
   uuid: '123',
-  value: {
-    url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Playfair_TimeSeries-2.png/640px-Playfair_TimeSeries-2.png',
-    width: 2067,
-    height: 1527,
-    filename: 'Playfair TimeSeries-2.png',
-  },
+  value: 'my data object',
 }
-const { BaseDisplay } = dataTypeImage
+const { BaseDisplay } = dataTypeText
 </script>
 
 <template>
   <div style="border-width: 2px; border-style: solid; border-color: black; display: inline-flex">
-    <BaseDisplay
-      :data-object="dataObject"
-      :style="{
-        width: `${dataObject.value.width / 4}px`,
-        height: `${dataObject.value.height / 4}px`,
-      }"
-    />
+    <BaseDisplay :data-object="dataObject" style="width: 100px; height: 100px" />
   </div>
 </template>

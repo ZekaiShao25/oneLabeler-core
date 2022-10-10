@@ -4,7 +4,7 @@
 [![Downloads][downloads-img]][downloads-url]
 [![Issues][issues-img]][issues-url]
 
-> My awesome module
+> Core modules of OneLabeler
 
 ## Install
 
@@ -16,5 +16,5 @@ npm install @onelabeler/core
 [downloads-url]: https://www.npmtrends.com/@onelabeler/core
 [npm-img]: https://img.shields.io/npm/v/@onelabeler/core
 [npm-url]: https://www.npmjs.com/package/@onelabeler/core
-[issues-img]: https://img.shields.io/github/issues/OneLabeler/test
-[issues-url]: https://github.com/OneLabeler/test/issues
+[issues-img]: https://img.shields.io/github/issues/OneLabeler/core
+[issues-url]: https://github.com/OneLabeler/core

@@ -2,6 +2,22 @@
 
 Declaration of the image data type display.
 
+## API
+
+### BaseDisplay
+
+#### Props
+
+| Name         | Type              | Description                      |
+| ------------ | ----------------- | -------------------------------- |
+| `dataObject` | `DataObjectImage` | The data object to be displayed. |
+
+#### Slots
+
+| Name      | Description                                              |
+| --------- | -------------------------------------------------------- |
+| `overlay` | Use this slot to overlay label tasks' interaction layer. |
+
 ## Usage
 
 ```vue
