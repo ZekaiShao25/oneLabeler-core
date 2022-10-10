@@ -1,3 +1,3 @@
-import * as image from './data-types/image'
+import * as image from './components/data-types/image'
 
 export { image as dataTypeImage }

@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [Vue()],
   resolve: {
     alias: {
-      mypackage: resolve(__dirname, '../src/index.ts'),
+      '@onelabeler/core': resolve(__dirname, '../src/index.ts'),
     },
   },
 })

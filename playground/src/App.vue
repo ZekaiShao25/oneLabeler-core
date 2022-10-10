@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { image } from 'mypackage'
+import { dataTypeImage } from '@onelabeler/core'
 
 const dataObject = {
   uuid: '123',
@@ -10,7 +10,7 @@ const dataObject = {
     filename: 'Playfair TimeSeries-2.png',
   },
 }
-const { BaseDisplay } = image
+const { BaseDisplay } = dataTypeImage
 </script>
 
 <template>

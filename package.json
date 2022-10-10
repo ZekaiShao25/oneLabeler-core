@@ -1,5 +1,5 @@
 {
-  "name": "mypackage",
+  "name": "@onelabeler/core",
   "type": "module",
   "version": "0.0.0",
   "private": false,
@@ -89,6 +89,7 @@
     "postcss-html": "^1.5.0",
     "postcss-markdown": "^1.2.0",
     "prettier": "^2.7.1",
+    "rollup": "^2.79.1",
     "sass": "^1.55.0",
     "stylelint": "^14.13.0",
     "stylelint-config-html": "^1.1.0",

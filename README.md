@@ -1,27 +1,4 @@
-# vue-ts-package-starter
-
-A starter template for Vue + TypeScript NPM package.
-
-Inspired by [typescript-npm-package-template](https://github.com/ryansonshine/typescript-npm-package-template) and [starter-ts](https://github.com/antfu/starter-ts)
-
-## Features
-
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vue](https://vuejs.org/)
-- [vite](https://vitejs.dev/)
-- [pnpm](https://pnpm.io/)
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-- [Lint Staged](https://github.com/okonet/lint-staged)
-- [Husky](https://github.com/typicode/husky)
-- [Issue Templates](https://github.com/ryansonshine/typescript-npm-package-template/tree/main/.github/ISSUE_TEMPLATE)
-- [GitHub Actions](https://github.com/ryansonshine/typescript-npm-package-template/tree/main/.github/workflows)
-
-**Remove everything from here and above**
-
----
-
-# mypackage
+# @onelabeler/core
 
 [![npm package][npm-img]][npm-url]
 [![Downloads][downloads-img]][downloads-url]
@@ -32,42 +9,12 @@ Inspired by [typescript-npm-package-template](https://github.com/ryansonshine/ty
 ## Install
 
 ```bash
-npm install my-package-name
+npm install @onelabeler/core
 ```
 
-## Usage
-
-```ts
-import { myPackage } from 'my-package-name'
-
-myPackage('hello')
-// => 'hello from my package'
-```
-
-## API
-
-### myPackage(input, options?)
-
-#### input
-
-Type: `string`
-
-Lorem ipsum.
-
-#### options
-
-Type: `object`
-
-##### postfix
-
-Type: `string`
-Default: `rainbows`
-
-Lorem ipsum.
-
-[downloads-img]: https://img.shields.io/npm/dt/mypackage
-[downloads-url]: https://www.npmtrends.com/mypackage
-[npm-img]: https://img.shields.io/npm/v/mypackage
-[npm-url]: https://www.npmjs.com/package/mypackage
+[downloads-img]: https://img.shields.io/npm/dt/@onelabeler/core
+[downloads-url]: https://www.npmtrends.com/@onelabeler/core
+[npm-img]: https://img.shields.io/npm/v/@onelabeler/core
+[npm-url]: https://www.npmjs.com/package/@onelabeler/core
 [issues-img]: https://img.shields.io/github/issues/OneLabeler/test
 [issues-url]: https://github.com/OneLabeler/test/issues
