@@ -1,15 +1,30 @@
 <script lang="ts">
 import { storeToRefs } from 'pinia'
-import { defineComponent } from 'vue'
-import { useStore as useAnnotationStore } from '../store'
-import { useStore as useToolbarStore } from './composables/useStore'
+import { defineComponent, toRefs } from 'vue'
+import type { PropType } from 'vue'
+import type { useStore as useAnnotationStore } from '../store'
+import type { useStore as useToolbarStore } from './composables/useStore'
 
 /** The toolbar widgets of this label task. */
 export default defineComponent({
   name: 'BaseToolSingle',
-  setup() {
-    const annotationStore = useAnnotationStore()
-    const toolbarStore = useToolbarStore()
+  props: {
+    /** The hook of store storing annotations. */
+    useAnnotationStore: {
+      type: Function as PropType<typeof useAnnotationStore>,
+      required: true,
+    },
+    /** The hook of store storing toolbar states. */
+    useToolbarStore: {
+      type: Function as PropType<typeof useToolbarStore>,
+      required: true,
+    },
+  },
+  setup(props) {
+    const { useAnnotationStore, useToolbarStore } = toRefs(props)
+
+    const annotationStore = useAnnotationStore.value()
+    const toolbarStore = useToolbarStore.value()
 
     const { categories, category2color } = storeToRefs(annotationStore)
     const { stroke } = storeToRefs(toolbarStore)

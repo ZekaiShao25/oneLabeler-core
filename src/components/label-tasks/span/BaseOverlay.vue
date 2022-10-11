@@ -4,16 +4,26 @@ import type { PropType } from 'vue'
 import { defineComponent, ref, toRefs, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { onKeyDown, useElementVisibility } from '@vueuse/core'
-import { useStore as useAnnotationStore } from '../store'
+import type { useStore as useAnnotationStore } from '../store'
 import { AnnotationType } from '../types'
 import useBoxes from './composables/useBoxes'
 import useSpan from './composables/useSpan'
-import { useStore as useToolbarStore } from './composables/useStore'
+import type { useStore as useToolbarStore } from './composables/useStore'
 import type { AnnotationSpan } from './types'
 
 export default defineComponent({
   name: 'BaseOverlay',
   props: {
+    /** The hook of store storing annotations. */
+    useAnnotationStore: {
+      type: Function as PropType<typeof useAnnotationStore>,
+      required: true,
+    },
+    /** The hook of store storing toolbar states. */
+    useToolbarStore: {
+      type: Function as PropType<typeof useToolbarStore>,
+      required: true,
+    },
     /** Get the node that contains the text. */
     getTextNode: {
       type: Function as PropType<() => Text>,
@@ -26,10 +36,10 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { getTextNode } = toRefs(props)
+    const { getTextNode, useAnnotationStore, useToolbarStore } = toRefs(props)
 
-    const annotationStore = useAnnotationStore()
-    const toolbarStore = useToolbarStore()
+    const annotationStore = useAnnotationStore.value()
+    const toolbarStore = useToolbarStore.value()
 
     const { category2color, selection } = storeToRefs(annotationStore)
     const { stroke } = storeToRefs(toolbarStore)

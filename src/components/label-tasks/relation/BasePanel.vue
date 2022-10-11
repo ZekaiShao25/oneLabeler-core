@@ -1,8 +1,8 @@
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import type { Ref } from 'vue'
+import { computed, defineComponent, toRefs } from 'vue'
+import type { PropType, Ref } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useStore } from '../store'
+import type { useStore as useAnnotationStore } from '../store'
 import { AnnotationType } from '../types'
 import useSpan from '../span/composables/useSpan'
 import type { AnnotationSpan } from '../span/types'
@@ -12,8 +12,17 @@ import type { AnnotationRelation } from './types'
 export default defineComponent({
   name: 'BasePanel',
   components: { VLabelRelation },
-  setup() {
-    const store = useStore()
+  props: {
+    /** The hook of store storing annotations. */
+    useAnnotationStore: {
+      type: Function as PropType<typeof useAnnotationStore>,
+      required: true,
+    },
+  },
+  setup(props) {
+    const { useAnnotationStore } = toRefs(props)
+
+    const store = useAnnotationStore.value()
     const { annotations, category2color } = storeToRefs(store)
 
     const { spans, selectSpan, isSelected } = useSpan(store)
