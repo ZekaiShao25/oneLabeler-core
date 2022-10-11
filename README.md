@@ -12,6 +12,10 @@
 npm install @onelabeler/core
 ```
 
+### Caveat
+
+Needs to first install UnoCSS + Tailwind, otherwise the style will not be shown correctly.
+
 ## Usage
 
 ```js
