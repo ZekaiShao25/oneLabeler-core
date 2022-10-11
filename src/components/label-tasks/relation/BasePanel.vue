@@ -13,7 +13,7 @@ export default defineComponent({
   name: 'BasePanel',
   components: { VLabelRelation },
   props: {
-    /** The hook of store storing annotations. */
+    /** The pinia store to store annotations. */
     useAnnotationStore: {
       type: Function as PropType<typeof useAnnotationStore>,
       required: true,

@@ -6,4 +6,4 @@ Declaration of the relation label task.
 
 ### BasePanel (_Optional_)
 
-The vue component for showing relation annotations.
+The vue component to show relation annotations.

@@ -11,15 +11,34 @@ Must be used to enable span annotation.
 
 #### Props
 
-| Name           | Type                | Description                                             |
-| -------------- | ------------------- | ------------------------------------------------------- |
-| `getTextNode`  | `() => Text`        | Get the node that contains the text.                    |
-| `getEventNode` | `() => HTMLElement` | Get the node on which interaction events are triggered. |
+| Name                 | Type                        | Description                                             |
+| -------------------- | --------------------------- | ------------------------------------------------------- |
+| `useAnnotationStore` | `typeof useAnnotationStore` | The pinia store to store annotations.                   |
+| `useToolbarStore`    | `typeof useToolbarStore`    | The pinia store to store toolbar states.                |
+| `getTextNode`        | `() => Text`                | Get the node that contains the text.                    |
+| `getEventNode`       | `() => HTMLElement`         | Get the node on which interaction events are triggered. |
 
 ### BasePanel (_Optional_)
 
-The vue component for showing span annotations.
+The vue component to show span annotations.
+
+#### Props
+
+| Name                 | Type                        | Description                           |
+| -------------------- | --------------------------- | ------------------------------------- |
+| `useAnnotationStore` | `typeof useAnnotationStore` | The pinia store to store annotations. |
 
 ### BaseToolSingle (_Required_)
 
-The vue component for showing toolbar widgets of this label task.
+The vue component to show toolbar widgets of this label task.
+
+#### Props
+
+| Name                 | Type                        | Description                              |
+| -------------------- | --------------------------- | ---------------------------------------- |
+| `useAnnotationStore` | `typeof useAnnotationStore` | The pinia store to store annotations.    |
+| `useToolbarStore`    | `typeof useToolbarStore`    | The pinia store to store toolbar states. |
+
+### useToolbarStore (_Required_)
+
+The pinia store to store toolbar states.

@@ -14,12 +14,12 @@ import type { AnnotationSpan } from './types'
 export default defineComponent({
   name: 'BaseOverlay',
   props: {
-    /** The hook of store storing annotations. */
+    /** The pinia store to store annotations. */
     useAnnotationStore: {
       type: Function as PropType<typeof useAnnotationStore>,
       required: true,
     },
-    /** The hook of store storing toolbar states. */
+    /** The pinia store to store toolbar states. */
     useToolbarStore: {
       type: Function as PropType<typeof useToolbarStore>,
       required: true,
