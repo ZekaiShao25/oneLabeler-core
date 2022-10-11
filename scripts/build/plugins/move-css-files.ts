@@ -8,7 +8,10 @@ export const moveCssFiles = (format: BuildFormat): Plugin => {
     generateBundle(options, bundle) {
       Object.entries(bundle).forEach(([key, info]) => {
         if (info.type === 'asset' && info.fileName.endsWith('.css')) {
-          bundle[key].fileName = bundle[key].fileName.replace(`${format}/components`, 'style')
+          bundle[key].fileName = bundle[key].fileName.replace(
+            `${format}/components`,
+            'style',
+          )
         }
       })
     },

@@ -26,7 +26,10 @@ export interface ReleaseConfig {
 
 const gitTagFromVersion = (version: string) => `v${version}`
 
-const incrementVersion = (version: string, type: 'major' | 'minor' | 'patch'): string => {
+const incrementVersion = (
+  version: string,
+  type: 'major' | 'minor' | 'patch',
+): string => {
   const result = semver.inc(version, type)
   if (!result) {
     throw new Error(`Unable to increment ${type} version on '${version}'`)
@@ -34,8 +37,12 @@ const incrementVersion = (version: string, type: 'major' | 'minor' | 'patch'): s
   return result
 }
 
-const getReleaseConfig = async (releaseType: ReleaseType): Promise<ReleaseConfig> => {
-  const currentBranchName = await executeCommand('git rev-parse --abbrev-ref HEAD')
+const getReleaseConfig = async (
+  releaseType: ReleaseType,
+): Promise<ReleaseConfig> => {
+  const currentBranchName = await executeCommand(
+    'git rev-parse --abbrev-ref HEAD',
+  )
   // 20220602
   const dateIsoShort = new Date().toISOString().split('T')[0].replace(/-/g, '')
   // 12a4dd78
@@ -122,7 +129,9 @@ const confirmTagAvailable = async (tagName: string): Promise<boolean> => {
   return !result.match(new RegExp(`refs\\/tags\\/${tagName}\\b`))
 }
 
-const confirmNpmVersionAvailable = async (distTag: string): Promise<boolean> => {
+const confirmNpmVersionAvailable = async (
+  distTag: string,
+): Promise<boolean> => {
   return !(await executeCommand(`npm view epic-spinners@${distTag}`))
 }
 
@@ -140,11 +149,19 @@ const checkIfTooLate = async () => {
 }
 
 // Check if we have correct state to go for release
-const runReleaseChecks = async (releaseConfig: ReleaseConfig, dryRun: boolean) => {
-  const { branch, requiredBranch, showSleepCheck, gitTag, version } = releaseConfig
+const runReleaseChecks = async (
+  releaseConfig: ReleaseConfig,
+  dryRun: boolean,
+) => {
+  const { branch, requiredBranch, showSleepCheck, gitTag, version }
+    = releaseConfig
 
   if (!dryRun && requiredBranch && branch !== requiredBranch) {
-    console.log(chalk.red(`${branch} is incorrect for this flow, use ${requiredBranch} instead`))
+    console.log(
+      chalk.red(
+        `${branch} is incorrect for this flow, use ${requiredBranch} instead`,
+      ),
+    )
     return false
   }
   if (!(await confirmNode())) {
@@ -168,13 +185,17 @@ const runReleaseChecks = async (releaseConfig: ReleaseConfig, dryRun: boolean) =
   }
   if (gitTag && !(await confirmTagAvailable(gitTag))) {
     console.log(
-      chalk.red(`Tag ${gitTag} is already on upstream. You can remove it if it was by mistake.`),
+      chalk.red(
+        `Tag ${gitTag} is already on upstream. You can remove it if it was by mistake.`,
+      ),
     )
     return false
   }
   if (!(await confirmNpmVersionAvailable(version))) {
     console.log(
-      chalk.red(`Version ${version} is already on NPM, you can bump version manually to fix that.`),
+      chalk.red(
+        `Version ${version} is already on NPM, you can bump version manually to fix that.`,
+      ),
     )
     return false
   }
@@ -183,7 +204,9 @@ const runReleaseChecks = async (releaseConfig: ReleaseConfig, dryRun: boolean) =
   }
   catch (e) {
     console.log(
-      chalk.red('You have uncommitted changes, please commit before attempting to release.'),
+      chalk.red(
+        'You have uncommitted changes, please commit before attempting to release.',
+      ),
     )
     return false
   }
@@ -196,7 +219,10 @@ const runReleaseChecks = async (releaseConfig: ReleaseConfig, dryRun: boolean) =
   return true
 }
 
-const runReleaseScript = async (releaseConfig: ReleaseConfig, dryRun: boolean) => {
+const runReleaseScript = async (
+  releaseConfig: ReleaseConfig,
+  dryRun: boolean,
+) => {
   const { version, gitTag, distTag, shouldCommit } = releaseConfig
 
   // **** Attempt building dist ****
@@ -231,7 +257,9 @@ const runReleaseScript = async (releaseConfig: ReleaseConfig, dryRun: boolean) =
 
   // **** Publishing on npm ****
 
-  await executeAndLog(`npm publish --tag=${distTag} --verbose${dryRun ? ' --dry-run' : ''}`)
+  await executeAndLog(
+    `npm publish --tag=${distTag} --verbose${dryRun ? ' --dry-run' : ''}`,
+  )
 
   // **** Cleanup ****
 
@@ -252,7 +280,8 @@ const inquireDryRun = async () =>
   simplePrompt<boolean>({
     type: 'confirm',
     default: false,
-    message: 'Do you want a dry-run? (there won\'t be any non reversible changes)',
+    message:
+      'Do you want a dry-run? (there won\'t be any non reversible changes)',
   })
 
 ;(async () => {

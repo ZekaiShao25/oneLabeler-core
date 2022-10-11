@@ -33,7 +33,9 @@ export const generateComponentsList = (componentsDir: string) => {
   return entries
 }
 
-const packageJSON = JSON.parse(readFileSync(resolve(process.cwd(), './package.json')).toString())
+const packageJSON = JSON.parse(
+  readFileSync(resolve(process.cwd(), './package.json')).toString(),
+)
 export const dependencies = [
   ...Object.keys(packageJSON.dependencies ?? {}),
   ...Object.keys(packageJSON.peerDependencies ?? {}),

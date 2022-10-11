@@ -18,12 +18,23 @@ type ExecuteOptions = Partial<{
   errorMessage: string
 }>
 
-const buildCommandFromTemplate = (template: TemplateStringsArray, ...args: any[]): string => {
-  return template.reduce((acc, curr, i) => acc + curr + (args[i] ?? '').toString())
+const buildCommandFromTemplate = (
+  template: TemplateStringsArray,
+  ...args: any[]
+): string => {
+  return template.reduce(
+    (acc, curr, i) => acc + curr + (args[i] ?? '').toString(),
+  )
 }
 
-type ExecuteTemplate = (template: TemplateStringsArray, ...args: any[]) => Promise<string>
-type ExecuteString = (command: string, options?: ExecuteOptions) => Promise<string>
+type ExecuteTemplate = (
+  template: TemplateStringsArray,
+  ...args: any[]
+) => Promise<string>
+type ExecuteString = (
+  command: string,
+  options?: ExecuteOptions,
+) => Promise<string>
 
 export const defineExecute = (
   spawnFn: (command: string, options?: ExecuteOptions) => Promise<string>,

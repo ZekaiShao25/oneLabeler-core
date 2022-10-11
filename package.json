@@ -71,11 +71,18 @@
     "vue": "^3.2.0"
   },
   "dependencies": {
-    "@vueuse/core": "^9.3.0"
+    "@vueuse/core": "^9.3.0",
+    "d3-scale": "^4.0.2",
+    "d3-scale-chromatic": "^3.0.0",
+    "pinia": "^2.0.23",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.27.0",
+    "@types/d3-scale": "^4.0.2",
+    "@types/d3-scale-chromatic": "^3.0.0",
     "@types/node": "^18.8.3",
+    "@types/uuid": "^8.3.4",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vue/eslint-config-prettier": "^7.0.0",
     "autoprefixer": "^10.4.12",

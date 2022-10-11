@@ -9,7 +9,8 @@ export const removeEntryPointImports = (): Plugin => {
 
     renderChunk(code, chunk, options) {
       if (chunk.fileName.includes('/index')) {
-        const importsRegex = options.format === 'cjs' ? cjsImportsRegex : esmImportsRegex
+        const importsRegex
+          = options.format === 'cjs' ? cjsImportsRegex : esmImportsRegex
         return code.replace(importsRegex, '')
       }
     },

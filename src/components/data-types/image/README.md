@@ -6,6 +6,8 @@ Declaration of the image data type display.
 
 ### BaseDisplay
 
+The vue component to display a single data object.
+
 #### Props
 
 | Name         | Type              | Description                      |
@@ -37,7 +39,9 @@ const { BaseDisplay } = dataTypeImage
 </script>
 
 <template>
-  <div style="border-width: 2px; border-style: solid; border-color: black; display: inline-flex">
+  <div
+    style="border-width: 2px; border-style: solid; border-color: black; display: inline-flex"
+  >
     <BaseDisplay
       :data-object="dataObject"
       :style="{

@@ -41,10 +41,16 @@ export const $ = defineExecute(
       child.on('close', (code) => {
         if (code === 0) {
           if (options.successMessage) {
-            console.info(`${chalk.bgGreen(' Success ')} ${options.successMessage}`)
+            console.info(
+              `${chalk.bgGreen(' Success ')} ${options.successMessage}`,
+            )
           }
           else {
-            console.info(`${chalk.bgGreen(' Success ')} ${command} exited with code ${code}`)
+            console.info(
+              `${chalk.bgGreen(
+                ' Success ',
+              )} ${command} exited with code ${code}`,
+            )
           }
 
           resolve(stdout)
@@ -54,7 +60,9 @@ export const $ = defineExecute(
             console.error(`${chalk.bgRed(' Error ')} ${options.errorMessage}`)
           }
           else {
-            console.error(`${chalk.bgRed(' Error ')} ${command} exited with code ${code}`)
+            console.error(
+              `${chalk.bgRed(' Error ')} ${command} exited with code ${code}`,
+            )
           }
 
           reject(stdout)

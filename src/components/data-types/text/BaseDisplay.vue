@@ -15,19 +15,19 @@ export default defineComponent({
   methods: {
     /**
      * Get the node that contains the text.
-     * Needed by span annotation.
+     * Needed by span label task.
      */
     getTextNode(): Text {
       const element = this.$refs.text as HTMLElement
-      const node = [...element.childNodes].find((d) => d.nodeType === Node.TEXT_NODE) as
-        | Text
-        | undefined
+      const node = [...element.childNodes].find(
+        (d) => d.nodeType === Node.TEXT_NODE,
+      ) as Text | undefined
       if (node === undefined) throw new Error('Text node does not exist.')
       return node
     },
     /**
      * Get the node on which interaction events are triggered.
-     * Needed by span annotation.
+     * Needed by span label task.
      */
     getEventNode(): HTMLElement {
       return this.$refs.medium as HTMLElement
@@ -39,8 +39,16 @@ export default defineComponent({
 <template>
   <div style="display: grid">
     <!-- Expose getTextNode and getEventNode to label task's overlay. -->
-    <slot name="overlay" :get-text-node="getTextNode" :get-event-node="getEventNode" />
-    <div ref="medium" class="data-object-container" style="grid-area: 1 / 1 / 2 / 2">
+    <slot
+      name="overlay"
+      :get-text-node="getTextNode"
+      :get-event-node="getEventNode"
+    />
+    <div
+      ref="medium"
+      class="data-object-container"
+      style="grid-area: 1 / 1 / 2 / 2"
+    >
       <p ref="text" class="data-object-content">
         {{ dataObject.value }}
       </p>

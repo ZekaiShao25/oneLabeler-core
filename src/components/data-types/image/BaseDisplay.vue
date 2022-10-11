@@ -20,8 +20,12 @@ export default defineComponent({
     const container: Ref<HTMLElement | null> = ref(null)
     const { width, height } = useElementSize(container)
 
-    const contentWidth = computed(() => dataObject.value.value.width ?? undefined)
-    const contentHeight = computed(() => dataObject.value.value.height ?? undefined)
+    const contentWidth = computed(
+      () => dataObject.value.value.width ?? undefined,
+    )
+    const contentHeight = computed(
+      () => dataObject.value.value.height ?? undefined,
+    )
     const url = computed(() => dataObject.value.value.url ?? undefined)
 
     // Compute the scaling of the image to fit the svg.
@@ -29,7 +33,10 @@ export default defineComponent({
       if (width.value === null || height.value === null) {
         return ''
       }
-      if (contentWidth.value === undefined || contentHeight.value === undefined) {
+      if (
+        contentWidth.value === undefined
+        || contentHeight.value === undefined
+      ) {
         return ''
       }
       return calFittingTransform(

@@ -12,9 +12,9 @@ import { dependencies, generateComponentsList } from '../helpers'
 
 import type { BuildFormat } from '../types/types'
 
-const components = generateComponentsList(resolve(process.cwd(), 'src/components')).map(
-  ({ name }) => name,
-)
+const components = generateComponentsList(
+  resolve(process.cwd(), 'src/components'),
+).map(({ name }) => name)
 
 const libBuildOptions = (format: BuildFormat): LibraryOptions => ({
   entry: resolve(process.cwd(), 'src/index.ts'),

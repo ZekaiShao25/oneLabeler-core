@@ -19,11 +19,14 @@ export const calFittingTransform = (
   const cy = (yMax + yMin) / 2
 
   // the transformation for setting the object to the center of the target
-  const strCenterBackground = `translate(${targetWidth / 2}, ${targetHeight / 2})`
+  const strCenterBackground = `translate(${targetWidth / 2}, ${
+    targetHeight / 2
+  })`
   // the transformation for scaling the concerned area of the object to fit the target size
   const strScale = Number.isNaN(scale) ? '' : `scale(${scale})`
   // the transformation for setting the center of the object to the (0, 0) position in the target
-  const strCenterItem = Number.isNaN(cx) || Number.isNaN(cy) ? '' : `translate(${-cx}, ${-cy})`
+  const strCenterItem
+    = Number.isNaN(cx) || Number.isNaN(cy) ? '' : `translate(${-cx}, ${-cy})`
 
   return strCenterBackground + strScale + strCenterItem
 }

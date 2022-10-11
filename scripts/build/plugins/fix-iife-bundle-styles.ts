@@ -1,4 +1,10 @@
-import { existsSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'fs'
+import {
+  existsSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from 'fs'
 import { join, parse } from 'path'
 import type { Plugin } from 'vite'
 

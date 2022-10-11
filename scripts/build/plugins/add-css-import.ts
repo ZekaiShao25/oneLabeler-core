@@ -3,7 +3,9 @@ import type { Plugin } from 'vite'
 import type { BuildFormat } from '../types/types'
 
 const generateCssImportSting = (format: BuildFormat, name: string) =>
-  format === 'cjs' ? `require('../../style/${name}.css');` : `import '../../style/${name}.css';`
+  format === 'cjs'
+    ? `require('../../style/${name}.css');`
+    : `import '../../style/${name}.css';`
 
 export const addCssImport = (format: BuildFormat): Plugin => {
   return {
