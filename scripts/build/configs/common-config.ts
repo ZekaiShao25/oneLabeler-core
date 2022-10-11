@@ -25,7 +25,8 @@ const rollupBuildOptions = (format: BuildFormat): RollupOptions => {
   const isEsmNode = format === 'esm-node'
 
   return {
-    external: dependencies,
+    // Reference: https://github.com/vuejs/pinia/discussions/1059
+    external: [...dependencies, 'pinia'],
     output: {
       dir: 'dist',
       format: format === 'cjs' ? 'cjs' : 'es',
@@ -91,7 +92,7 @@ export const createIifeViteConfig = () => {
         name: 'epicSpinners',
       },
       rollupOptions: {
-        external: dependencies,
+        external: [...dependencies, 'pinia'],
         output: {
           globals: {
             vue: 'Vue',
