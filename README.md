@@ -14,7 +14,8 @@ npm install @onelabeler/core
 
 ### Caveat
 
-Needs to first install UnoCSS + Tailwind, otherwise the style will not be shown correctly.
+- Needs to install UnoCSS + Tailwind, otherwise the style will not be shown correctly.
+- Needs to install Pinia, otherwise the state management in label tasks will not function.
 
 ## Usage
 
