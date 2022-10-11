@@ -1,4 +1,4 @@
-import { acceptHMRUpdate, defineStore } from 'pinia'
+import { defineStore } from 'pinia'
 import { scaleOrdinal } from 'd3-scale'
 import { schemePaired } from 'd3-scale-chromatic'
 import type { Annotation } from './types'
@@ -55,7 +55,3 @@ export const useStore = defineStore('annotation', {
     },
   },
 })
-
-if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useStore, import.meta.hot))
-}
