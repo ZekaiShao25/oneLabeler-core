@@ -1,3 +1,5 @@
+import 'uno.css'
+
 import * as dataTypeImage from './components/data-types/image'
 import * as dataTypeText from './components/data-types/text'
 import * as labelTaskRelation from './components/label-tasks/relation'
