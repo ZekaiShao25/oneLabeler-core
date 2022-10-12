@@ -2,6 +2,8 @@ import { join, parse, resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 import type { LibraryOptions } from 'vite'
 import type { RollupOptions } from 'rollup'
+import Unocss from 'unocss/vite'
+import { presetIcons, presetUno } from 'unocss'
 import { fixIifeBundleStyles } from '../plugins/fix-iife-bundle-styles'
 import { removeEntryPointImports } from '../plugins/remove-entry-point-imports'
 import { moveCssFiles } from '../plugins/move-css-files'
@@ -67,6 +69,15 @@ export const createViteConfig = (format: BuildFormat) => {
     },
     plugins: [
       vue(),
+      Unocss({
+        presets: [
+          presetUno(),
+          presetIcons({
+            scale: 1.2,
+            warn: true,
+          }),
+        ],
+      }),
       isEs && moveCssFiles(format),
       isEs && addCssImport(format),
       removeEntryPointImports(),
@@ -100,6 +111,18 @@ export const createIifeViteConfig = () => {
         },
       },
     },
-    plugins: [vue(), fixIifeBundleStyles()],
+    plugins: [
+      vue(),
+      Unocss({
+        presets: [
+          presetUno(),
+          presetIcons({
+            scale: 1.2,
+            warn: true,
+          }),
+        ],
+      }),
+      fixIifeBundleStyles(),
+    ],
   })
 }
