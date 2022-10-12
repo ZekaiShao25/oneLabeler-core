@@ -23,7 +23,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="w-1/1 h-1/1 border-l border-gray-200 flex flex-col">
+  <div class="w-1/1 h-1/1 border-gray-200 flex flex-col">
     <div class="h-9.5 border-b border-gray-200 flex gap-2 px-2 items-center">
       <div class="i-fa6-solid:code" />
       <div>Data Object</div>
