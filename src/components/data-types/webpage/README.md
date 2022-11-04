@@ -28,7 +28,7 @@ import { dataTypeWebpage } from '@onelabeler/core'
 
 const dataObject = {
   uuid: '123',
-  value: 'https://github.com/microsoft/OneLabeler-core',
+  value: 'https://en.wikipedia.org/wiki/Gomes',
 }
 const { BaseDisplay } = dataTypeWebpage
 </script>
