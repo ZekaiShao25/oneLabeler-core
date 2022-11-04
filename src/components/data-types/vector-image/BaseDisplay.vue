@@ -17,6 +17,6 @@ export default defineComponent({
 
 <template>
   <!-- eslint-disable-next-line vue/no-v-html -->
-  <!-- use .url here instead of .content (not the .html before) -->
-  <div v-html="dataObject.value.url" />
+  <!-- use .value here (not the .html before) -->
+  <div v-html="dataObject.value" />
 </template>

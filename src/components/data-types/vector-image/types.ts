@@ -4,9 +4,6 @@ import type { DataObject } from '../types'
 export interface DataObjectVectorImage extends DataObject {
   /** The universal unique id of the data object. */
   uuid: string
-  /** The content of the data object. The text string. */
-  value: {
-    /** The url of the vector-image. */
-    url: string | null
-  }
+  /** The content of the vector-image. */
+  value: string | null
 }
