@@ -1,5 +1,3 @@
-<!-- Copyright (c) Microsoft Corporation.
-     Licensed under the MIT License. -->
 <script lang="ts">
 import type { PropType } from 'vue'
 import type { DataObjectWebpage } from './types'
