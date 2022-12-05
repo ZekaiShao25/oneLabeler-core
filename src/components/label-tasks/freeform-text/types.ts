@@ -1,6 +1,6 @@
 import type { Annotation, AnnotationType } from '../types'
 
-/** The relation annotation. */
+/** The freeform-text annotation. */
 export interface AnnotationFreeformText extends Annotation {
   /** The uuid of the annotation. */
   uuid: string
