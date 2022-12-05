@@ -33,17 +33,23 @@ export default defineComponent({
     const buttonText: Ref<string> = ref('note')
     const buttonIcon: Ref<string> = ref('i-fa6-solid:envelope-open-text')
     const dialogTitle: Ref<string> = ref('Freeform Text Annotation')
-    const label
-      = annotations.value === null
-        ? null
-        : (annotations.value.find(
-            (d) => d.type === AnnotationType.FreeformText,
-          ) as AnnotationFreeformText | undefined)
     const buttonTitle = computed<string>(() => {
+      const label
+        = annotations.value === null
+          ? null
+          : (annotations.value.find(
+              (d) => d.type === AnnotationType.FreeformText,
+            ) as AnnotationFreeformText | undefined)
       if (label === null) return 'note'
       return `note: ${label?.value}`
     })
     const syncLabel = (): void => {
+      const label
+        = annotations.value === null
+          ? null
+          : (annotations.value.find(
+              (d) => d.type === AnnotationType.FreeformText,
+            ) as AnnotationFreeformText | undefined)
       text.value = label?.value ?? null
     }
 
@@ -87,55 +93,54 @@ export default defineComponent({
 </script>
 
 <template>
-  <!-- Using tailwind to implement dialog may require more effort (written as <div>s) -->
-  <VDialog :dialog="dialog">
-    <template #activator>
-      <!-- The activation button. -->
-      <slot name="button">
-        <!-- what's the card-header-button? -->
-        <button
-          :title="buttonTitle"
-          :disabled="disabled"
-          class="font-medium text-sm tracking-normal"
-          @click="dialog = !dialog"
-        >
-          <div :class="buttonIcon" />
-          {{ buttonText }}
-        </button>
-      </slot>
-    </template>
-    <!-- A list of freeform-texts -->
-    <div class="px-6 py-4 bg-white rounded-md">
-      <div class="flex flex-row bg-gray-100 py-2 rounded-t-md">
-        <slot name="dialog-header">
-          <span class="px-2 font-normal text-xl tracking-normal select-none">
-            {{ dialogTitle }}
-          </span>
-
-          <div style="flex: 0 1 2%" />
+  <div>
+    <VDialog :dialog="dialog">
+      <template #activator>
+        <!-- The activation button. -->
+        <slot name="button">
           <button
-            class="px-1 border border-gray-200 rounded flex items-center gap-1 text-xl"
-            type="submit"
-            @click="setLabelText"
+            :title="buttonTitle"
+            :disabled="disabled"
+            class="font-medium text-sm tracking-normal"
+            @click="dialog = !dialog"
           >
-            submit
-          </button>
-          <div class="grow" />
-          <button
-            class="px-2 rounded-md border-hidden bg-transparent text-xl"
-            title="Close"
-            @click="clickCloseDialog"
-          >
-            <div class="i-fa6-solid:xmark" />
+            <div :class="buttonIcon" />
+            {{ buttonText }}
           </button>
         </slot>
+      </template>
+      <!-- A list of freeform-texts -->
+      <div class="px-6 py-4 bg-white rounded-md">
+        <div class="flex flex-row bg-gray-100 py-2 rounded-t-md">
+          <slot name="dialog-header">
+            <span class="px-2 font-normal text-xl tracking-normal select-none">
+              {{ dialogTitle }}
+            </span>
+
+            <div style="flex: 0 1 2%" />
+            <button
+              class="px-1 border border-gray-200 rounded flex items-center gap-1 text-xl"
+              type="submit"
+              @click="setLabelText"
+            >
+              submit
+            </button>
+            <div class="grow" />
+            <button
+              class="px-2 rounded-md border-hidden bg-transparent text-xl"
+              title="Close"
+              @click="clickCloseDialog"
+            >
+              <div class="i-fa6-solid:xmark" />
+            </button>
+          </slot>
+        </div>
+        <textarea
+          class="resize-none w-192 h-192 text-base border-gray-200 rounded-b-md"
+          :value="text ?? ''"
+          @change="text = ($event.target as HTMLInputElement).value"
+        />
       </div>
-      <textarea
-        class="resize-none w-192 h-192 text-base border-gray-200 rounded-b-md"
-        :value="text ?? ''"
-        @change="text = ($event.target as HTMLInputElement).value"
-      />
-    </div>
-  </VDialog>
-  <!-- </v-dialog> -->
+    </VDialog>
+  </div>
 </template>
