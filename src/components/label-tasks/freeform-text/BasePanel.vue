@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, onMounted, ref, toRefs, watch } from 'vue'
+import { defineComponent, ref, toRefs, watch } from 'vue'
 import type { PropType, Ref } from 'vue'
 import { AnnotationType } from '../types'
 import type { Annotation } from '../types'
@@ -35,17 +35,12 @@ export default defineComponent({
         type: AnnotationType.FreeformText,
         value: text.value,
       }
-      // syncLabel()
       emit('upsertLabels', partialFreeformText)
     }
 
     watch(annotations, () => {
       syncLabel()
     })
-
-    // onMounted(() => {
-    //   syncLabel()
-    // })
 
     return {
       text,

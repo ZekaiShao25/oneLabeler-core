@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref, toRefs, watch } from 'vue'
+import { computed, defineComponent, ref, toRefs, watch } from 'vue'
 import type { PropType, Ref } from 'vue'
 import VDialog from '../../../packages/VDialog/index.vue'
 import { AnnotationType } from '../types'
@@ -26,13 +26,6 @@ export default defineComponent({
 
     const text: Ref<string | null> = ref(null)
     const dialog: Ref<boolean> = ref(false)
-    // All these written as ref but not fixed in template
-    // because the values of these parameters may need to be adjusted
-    // during the iteration process and may be exposed as props later
-    const maxWidth: Ref<string> = ref('600px')
-    const buttonText: Ref<string> = ref('note')
-    const buttonIcon: Ref<string> = ref('i-fa6-solid:envelope-open-text')
-    const dialogTitle: Ref<string> = ref('Freeform Text Annotation')
     const buttonTitle = computed<string>(() => {
       const label
         = annotations.value === null
@@ -58,7 +51,6 @@ export default defineComponent({
         type: AnnotationType.FreeformText,
         value: text.value,
       }
-      // syncLabel()
       emit('upsertLabels', partialFreeformText)
     }
 
@@ -72,21 +64,20 @@ export default defineComponent({
       syncLabel()
     })
 
-    // onMounted(() => {
-    //   syncLabel()
-    // })
-
     return {
       text,
       syncLabel,
       setLabelText,
       dialog,
-      maxWidth,
-      buttonIcon,
-      buttonText,
       buttonTitle,
-      dialogTitle,
       clickCloseDialog,
+    }
+  },
+  data() {
+    return {
+      maxWidth: '600px',
+      buttonText: 'note',
+      dialogTitle: 'Freeform Text Annotation',
     }
   },
 })
@@ -104,7 +95,7 @@ export default defineComponent({
             class="font-medium text-sm tracking-normal"
             @click="dialog = !dialog"
           >
-            <div :class="buttonIcon" />
+            <div class="i-fa6-solid:envelope-open-text" />
             {{ buttonText }}
           </button>
         </slot>
