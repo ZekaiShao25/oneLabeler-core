@@ -65,7 +65,7 @@ export default defineComponent({
  * Implementation note:
  * - flex: 1 1 auto does not work on svg like it works on div.
  * Thus, wrap the svg with a div, make the div size responsive,
- * and update the svg with the div is resized.
+ * and update the svg when the div is resized.
  * - Set width and height attribute to 0 to undo the default
  * svg size (with width being 300 and height being 150)
  * and set width: 100%; height: 100%; to make it responsive.
