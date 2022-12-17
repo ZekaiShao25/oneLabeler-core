@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent, ref, toRefs, watch } from 'vue'
 import type { PropType, Ref } from 'vue'
-import { AnnotationType } from '../types'
 import type { Annotation } from '../types'
+import useLabel from './useLabel'
 import type { AnnotationFreeformText } from './types'
 
 export default defineComponent({
@@ -18,30 +18,16 @@ export default defineComponent({
   setup(props, { emit }) {
     const { annotations } = toRefs(props)
 
-    const text: Ref<string | null> = ref(null)
-
-    const syncLabel = (): void => {
-      const label
-        = annotations.value === null
-          ? null
-          : (annotations.value.find(
-              (d) => d.type === AnnotationType.FreeformText,
-            ) as AnnotationFreeformText | undefined)
-      text.value = label?.value ?? null
-    }
-
-    const setLabelText = (): void => {
-      const partialFreeformText: Partial<AnnotationFreeformText> = {
-        type: AnnotationType.FreeformText,
-        value: text.value,
-      }
+    const onSetLabelText = (
+      partialFreeformText: Partial<AnnotationFreeformText>,
+    ): void => {
       emit('upsertLabels', partialFreeformText)
     }
 
-    watch(annotations, () => {
-      syncLabel()
-    })
-
+    const { text, syncLabel, setLabelText } = useLabel(
+      annotations,
+      onSetLabelText,
+    )
     return {
       text,
       syncLabel,
@@ -59,9 +45,6 @@ export default defineComponent({
     </div>
     <!-- A list of freeform-texts -->
     <div class="flex-1 flex flex-col gap-1 p-1">
-      <!-- the css (props) not fully modified yet;
-      does I rewrite auto-grow in tailwind properly?
-      what about label='Annotation' in v-textarea? -->
       <textarea
         class="flex-1 resize-none auto-cols-auto auto-rows-auto"
         :value="text ?? ''"

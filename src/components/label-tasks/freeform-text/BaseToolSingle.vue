@@ -1,9 +1,10 @@
 <script lang="ts">
-import { computed, defineComponent, ref, toRefs, watch } from 'vue'
+import { computed, defineComponent, ref, toRefs } from 'vue'
 import type { PropType, Ref } from 'vue'
 import VDialog from '../../../packages/VDialog/index.vue'
 import { AnnotationType } from '../types'
 import type { Annotation } from '../types'
+import useLabel from './useLabel'
 import type { AnnotationFreeformText } from './types'
 
 export default defineComponent({
@@ -23,8 +24,6 @@ export default defineComponent({
   emits: ['upsertLabels', 'clickClose'],
   setup(props, { emit }) {
     const { annotations } = toRefs(props)
-
-    const text: Ref<string | null> = ref(null)
     const dialog: Ref<boolean> = ref(false)
     const buttonTitle = computed<string>(() => {
       const label
@@ -36,33 +35,22 @@ export default defineComponent({
       if (label === null) return 'note'
       return `note: ${label?.value}`
     })
-    const syncLabel = (): void => {
-      const label
-        = annotations.value === null
-          ? null
-          : (annotations.value.find(
-              (d) => d.type === AnnotationType.FreeformText,
-            ) as AnnotationFreeformText | undefined)
-      text.value = label?.value ?? null
-    }
 
-    const setLabelText = (): void => {
-      const partialFreeformText: Partial<AnnotationFreeformText> = {
-        type: AnnotationType.FreeformText,
-        value: text.value,
-      }
+    const onSetLabelText = (
+      partialFreeformText: Partial<AnnotationFreeformText>,
+    ): void => {
       emit('upsertLabels', partialFreeformText)
     }
 
+    const { text, syncLabel, setLabelText } = useLabel(
+      annotations,
+      onSetLabelText,
+    )
     const clickCloseDialog = (): void => {
       dialog.value = false
       syncLabel()
       emit('clickClose')
     }
-
-    watch(annotations, () => {
-      syncLabel()
-    })
 
     return {
       text,
