@@ -4,6 +4,10 @@ export enum AnnotationType {
   Span = 'Span',
   /** Relation between annotations. */
   Relation = 'Relation',
+  /** Freeform text description. */
+  FreeformText = 'FreeformText',
+  /** Category classification */
+  Classification = 'Classification',
 }
 
 /** The base annotation interface. */
